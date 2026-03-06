@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Participants\Schemas;
 
 use App\Enums\ObjectPronouns;
 use App\Enums\SubjectPronouns;
+use App\Filament\Forms\Components\PostcodeField;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -13,6 +14,9 @@ use Filament\Schemas\Components\FusedGroup;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
+
+use Filament\Schemas\Components\Utilities\Set;
+use Illuminate\Support\Str;
 
 class ParticipantForm
 {
@@ -60,8 +64,52 @@ class ParticipantForm
                                 Textarea::make('address')
                                     ->required()
                                     ->columnSpanFull(),
-                                TextInput::make('postcode')
+                                PostcodeField::make('postcode')
+                                    ->live()
                                     ->required(),
+                            ]),
+                        Tab::make('Geography')
+                            ->schema([
+                                TextInput::make('quality'),
+                                TextInput::make('eastings'),
+                                TextInput::make('northings'),
+                                TextInput::make('country'),
+                                TextInput::make('nhs_ha'),
+                                TextInput::make('longitude'),
+                                TextInput::make('latitude'),
+                                TextInput::make('european_electoral_region'),
+                                TextInput::make('primary_care_trust'),
+                                TextInput::make('region'),
+                                TextInput::make('lsoa'),
+                                TextInput::make('msoa'),
+                                TextInput::make('incode'),
+                                TextInput::make('outcode'),
+                                TextInput::make('parliamentary_constituency'),
+                                TextInput::make('parliamentary_constituency_2024'),
+                                TextInput::make('admin_district'),
+                                TextInput::make('parish'),
+                                TextInput::make('admin_county'),
+                                TextInput::make('date_of_introduction'),
+                                TextInput::make('admin_ward'),
+                                TextInput::make('ced'),
+                                TextInput::make('ccg'),
+                                TextInput::make('nuts'),
+                                TextInput::make('pfa'),
+                                TextInput::make('nhs_region'),
+                                TextInput::make('ttwa'),
+                                TextInput::make('national_park'),
+                                TextInput::make('bua'),
+                                TextInput::make('icb'),
+                                TextInput::make('cancer_alliance'),
+                                TextInput::make('lsoa11'),
+                                TextInput::make('msoa11'),
+                                TextInput::make('lsoa21'),
+                                TextInput::make('msoa21'),
+                                TextInput::make('oa21'),
+                                TextInput::make('ruc11'),
+                                TextInput::make('ruc21'),
+                                TextInput::make('lep1'),
+                                TextInput::make('lep2'),
                             ]),
                         Tab::make('Emergency contact')
                             ->schema([

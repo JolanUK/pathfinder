@@ -27,6 +27,7 @@ class ManageParticipantSettings extends SettingsPage
             ->columns(1)
             ->components([
                 Section::make(__('Identity Information'))
+                    ->columns(2)
                     ->schema([
                         Repeater::make('subjectPronouns')
                             ->simple(
