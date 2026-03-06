@@ -42,9 +42,11 @@ class ParticipantForm
                                     ->required(),
                                 FusedGroup::make([
                                     Select::make('subjectPronoun')
-                                        ->options(SubjectPronouns::class),
+                                        ->options(SubjectPronouns::class)
+                                        ->required(),
                                     Select::make('objectPronoun')
-                                        ->options(ObjectPronouns::class),
+                                        ->options(ObjectPronouns::class)
+                                        ->required(),
                                 ])
                                     ->label(__('Pronouns'))
                                     ->columns(),
@@ -70,47 +72,88 @@ class ParticipantForm
                             ]),
                         Tab::make('Geography')
                             ->schema([
-                                TextInput::make('quality'),
-                                TextInput::make('eastings'),
-                                TextInput::make('northings'),
-                                TextInput::make('country'),
-                                TextInput::make('nhs_ha'),
-                                TextInput::make('longitude'),
-                                TextInput::make('latitude'),
-                                TextInput::make('european_electoral_region'),
-                                TextInput::make('primary_care_trust'),
-                                TextInput::make('region'),
-                                TextInput::make('lsoa'),
-                                TextInput::make('msoa'),
-                                TextInput::make('incode'),
-                                TextInput::make('outcode'),
-                                TextInput::make('parliamentary_constituency'),
-                                TextInput::make('parliamentary_constituency_2024'),
-                                TextInput::make('admin_district'),
-                                TextInput::make('parish'),
-                                TextInput::make('admin_county'),
-                                TextInput::make('date_of_introduction'),
-                                TextInput::make('admin_ward'),
-                                TextInput::make('ced'),
-                                TextInput::make('ccg'),
-                                TextInput::make('nuts'),
-                                TextInput::make('pfa'),
-                                TextInput::make('nhs_region'),
-                                TextInput::make('ttwa'),
-                                TextInput::make('national_park'),
-                                TextInput::make('bua'),
-                                TextInput::make('icb'),
-                                TextInput::make('cancer_alliance'),
-                                TextInput::make('lsoa11'),
-                                TextInput::make('msoa11'),
-                                TextInput::make('lsoa21'),
-                                TextInput::make('msoa21'),
-                                TextInput::make('oa21'),
-                                TextInput::make('ruc11'),
-                                TextInput::make('ruc21'),
-                                TextInput::make('lep1'),
-                                TextInput::make('lep2'),
-                            ]),
+                                TextInput::make('quality')
+                                    ->readOnly(),
+                                TextInput::make('eastings')
+                                    ->readOnly(),
+                                TextInput::make('northings')
+                                    ->readOnly(),
+                                TextInput::make('country')
+                                    ->readOnly(),
+                                TextInput::make('nhs_ha')
+                                    ->readOnly(),
+                                TextInput::make('longitude')
+                                    ->readOnly(),
+                                TextInput::make('latitude')
+                                    ->readOnly(),
+                                TextInput::make('european_electoral_region')
+                                    ->readOnly(),
+                                TextInput::make('primary_care_trust')
+                                    ->readOnly(),
+                                TextInput::make('region')
+                                    ->readOnly(),
+                                TextInput::make('lsoa')
+                                    ->readOnly(),
+                                TextInput::make('msoa')
+                                    ->readOnly(),
+                                TextInput::make('incode')
+                                    ->readOnly(),
+                                TextInput::make('outcode')
+                                    ->readOnly(),
+                                TextInput::make('parliamentary_constituency')
+                                    ->readOnly(),
+                                TextInput::make('parliamentary_constituency_2024')
+                                    ->readOnly(),
+                                TextInput::make('admin_district')
+                                    ->readOnly(),
+                                TextInput::make('parish')
+                                    ->readOnly(),
+                                TextInput::make('admin_county')
+                                    ->readOnly(),
+                                TextInput::make('date_of_introduction')
+                                    ->readOnly(),
+                                TextInput::make('admin_ward')
+                                    ->readOnly(),
+                                TextInput::make('ced')
+                                    ->readOnly(),
+                                TextInput::make('ccg')
+                                    ->readOnly(),
+                                TextInput::make('nuts')
+                                    ->readOnly(),
+                                TextInput::make('pfa')
+                                    ->readOnly(),
+                                TextInput::make('nhs_region')
+                                    ->readOnly(),
+                                TextInput::make('ttwa')
+                                    ->readOnly(),
+                                TextInput::make('national_park')
+                                    ->readOnly(),
+                                TextInput::make('bua')
+                                    ->readOnly(),
+                                TextInput::make('icb')
+                                    ->readOnly(),
+                                TextInput::make('cancer_alliance')
+                                    ->readOnly(),
+                                TextInput::make('lsoa11')
+                                    ->readOnly(),
+                                TextInput::make('msoa11')
+                                    ->readOnly(),
+                                TextInput::make('lsoa21')
+                                    ->readOnly(),
+                                TextInput::make('msoa21')
+                                    ->readOnly(),
+                                TextInput::make('oa21')
+                                    ->readOnly(),
+                                TextInput::make('ruc11')
+                                    ->readOnly(),
+                                TextInput::make('ruc21')
+                                    ->readOnly(),
+                                TextInput::make('lep1')
+                                    ->readOnly(),
+                                TextInput::make('lep2')
+                                    ->readOnly(),
+                            ])
+                            ->columns(2),
                         Tab::make('Emergency contact')
                             ->schema([
                                 Toggle::make('emergencyConsent'),
