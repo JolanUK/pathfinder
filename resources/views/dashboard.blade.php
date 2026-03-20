@@ -16,3 +16,5 @@
         </div>
     </div>
 </x-layouts::app>
+
+@php dump(config('participant')) @endphp

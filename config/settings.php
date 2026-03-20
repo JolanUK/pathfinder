@@ -1,5 +1,8 @@
 <?php
 
+use App\Settings\GlobalSettings;
+use App\Settings\ParticipantSettings;
+
 return [
 
     /*
@@ -7,7 +10,8 @@ return [
      * put them (manually) here.
      */
     'settings' => [
-
+        GlobalSettings::class,
+        ParticipantSettings::class
     ],
 
     /*

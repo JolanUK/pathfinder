@@ -5,9 +5,16 @@
     "description": "The official Laravel starter kit for Livewire.",
     "keywords": ["laravel", "framework"],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/Users/kris/Development/filament/plugins/filament-postcodes"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "filament/filament": "^5.0",
+        "jolanuk/filament-postcodes": "@dev",
         "filament/spatie-laravel-settings-plugin": "^5.0",
         "laravel/fortify": "^1.30",
         "laravel/framework": "^12.0",

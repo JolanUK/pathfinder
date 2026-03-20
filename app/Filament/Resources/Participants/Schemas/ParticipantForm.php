@@ -4,7 +4,6 @@ namespace App\Filament\Resources\Participants\Schemas;
 
 use App\Enums\ObjectPronouns;
 use App\Enums\SubjectPronouns;
-use App\Filament\Forms\Components\PostcodeField;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -14,9 +13,9 @@ use Filament\Schemas\Components\FusedGroup;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
-
 use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Support\Str;
+use jolanUK\FilamentPostcodes\Forms\Components\PostcodeField;
 
 class ParticipantForm
 {
