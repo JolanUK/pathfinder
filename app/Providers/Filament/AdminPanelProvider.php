@@ -2,7 +2,6 @@
 
 namespace App\Providers\Filament;
 
-use App\Providers\GlobalSettingsProvider;
 use Filament\Enums\UserMenuPosition;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;

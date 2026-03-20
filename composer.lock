@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "64502c0180587e99ec415eef411be3fe",
+    "content-hash": "cbb481efce122af52c0b698fe5ecd270",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -2218,11 +2218,17 @@
         },
         {
             "name": "jolanuk/filament-postcodes",
-            "version": "5.x-dev",
+            "version": "v5.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jolanUK/filament-postcodes.git",
+                "reference": "4fa17aa8e9a32fc14778415131290e2bd15c6df3"
+            },
             "dist": {
-                "type": "path",
-                "url": "/Users/kris/Development/filament/plugins/filament-postcodes",
-                "reference": "e2c3fa3453fae3048ce135aacb7c4c7755c0bdb9"
+                "type": "zip",
+                "url": "https://api.github.com/repos/jolanUK/filament-postcodes/zipball/4fa17aa8e9a32fc14778415131290e2bd15c6df3",
+                "reference": "4fa17aa8e9a32fc14778415131290e2bd15c6df3",
+                "shasum": ""
             },
             "require": {
                 "filament/filament": "^5.0",
@@ -2238,10 +2244,6 @@
                 "pestphp/pest-plugin-arch": "^3.0|^4.0",
                 "pestphp/pest-plugin-laravel": "^3.0|^4.0",
                 "pestphp/pest-plugin-livewire": "^3.0|^4.0",
-                "phpstan/phpstan": "^2.0",
-                "phpstan/phpstan-deprecation-rules": "^2.0",
-                "phpstan/phpstan-phpunit": "^2.0",
-                "phpunit/phpunit": "^12.5",
                 "rector/rector": "^2.0",
                 "spatie/laravel-ray": "^1.26"
             },
@@ -2258,34 +2260,7 @@
                     "jolanUK\\FilamentPostcodes\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "jolanUK\\FilamentPostcodes\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "post-autoload-dump": [
-                    "@php ./vendor/bin/testbench package:discover --ansi"
-                ],
-                "analyse": [
-                    "phpstan analyse"
-                ],
-                "lint": [
-                    "pint"
-                ],
-                "refactor": [
-                    "rector"
-                ],
-                "test": [
-                    "pest --no-coverage"
-                ],
-                "test:lint": [
-                    "pint --test"
-                ],
-                "test:refactor": [
-                    "rector --dry-run"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2310,9 +2285,13 @@
                 "issues": "https://github.com/jolanuk/filament-postcodes/issues",
                 "source": "https://github.com/jolanuk/filament-postcodes"
             },
-            "transport-options": {
-                "relative": false
-            }
+            "funding": [
+                {
+                    "url": "https://github.com/jolanUK",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-03-01T19:39:25+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
@@ -11222,9 +11201,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "jolanuk/filament-postcodes": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

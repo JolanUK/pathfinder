@@ -11,7 +11,7 @@ return [
      */
     'settings' => [
         GlobalSettings::class,
-        ParticipantSettings::class
+        ParticipantSettings::class,
     ],
 
     /*

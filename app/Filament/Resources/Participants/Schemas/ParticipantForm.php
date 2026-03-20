@@ -13,8 +13,6 @@ use Filament\Schemas\Components\FusedGroup;
 use Filament\Schemas\Components\Tabs;
 use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Utilities\Set;
-use Illuminate\Support\Str;
 use jolanUK\FilamentPostcodes\Forms\Components\PostcodeField;
 
 class ParticipantForm
