@@ -24,14 +24,14 @@ class ParticipantsTable
                 TextColumn::make('surname')
                     ->searchable(),
                 TextColumn::make('pronouns')
-                    ->searchable(),
+                    ->hidden(),
                 TextColumn::make('email')
                     ->label('Email address')
                     ->searchable(),
                 TextColumn::make('telephone')
-                    ->searchable(),
+                    ->hidden(),
                 TextColumn::make('postcode')
-                    ->searchable(),
+                    ->hidden(),
                 TextColumn::make('dob')
                     ->date()
                     ->sortable(),
