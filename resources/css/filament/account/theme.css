@@ -1,0 +1,106 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+
+@source '../../../../vendor/guava/calendar/resources/**/*';
+
+@import '../../../../vendor/awcodes/mason/resources/css/plugin.css';
+@source '../../../../vendor/awcodes/mason/resources/**/*.blade.php';
+
+@theme {
+    --text-base: 18px;
+    
+    --color-layout-primary: oklch(1 0 0); /* White - #fff */
+    --color-layout-primary-dark: oklch(0, 0, 0); /* Black - #000 */
+
+    --color-layout-secondary: oklch(0.9791 0 0); /* Off-white - #f6f6f6 */
+
+    --color-brand-primary: oklch(0.3211 0 0); /* Dark grey - #333 */
+    --color-brand-secondary: oklch(0.3211 0 0); /* Dark grey - #333 */
+    --color-brand-primary-dark: oklch(0 0 0); /* Black - #000 */
+    --color-brand-secondary-dark: oklch(0 0 0); /* Black - #000 */
+
+    --color-content-primary: oklch(0.8452 0 0); /* Light grey - #ccc */
+    
+    --color-keyline-primary: oklch(0.9612 0 0); /* Off-white - #f2f2f2 */
+    --color-keyline-secondary: oklch(0.3867 0 0); /* Mid grey - #444 */
+}
+
+/* Basic structure */
+.fi {
+    @apply bg-gray-50 dark:bg-black text-base font-extralight!;
+
+    > * {
+        @apply font-extralight!;
+    }
+}
+
+/* Button */
+.fi-btn {
+    @apply bg-brand-primary dark:bg-brand-primary-dark text-white rounded-xs px-5 py-3 font-light text-xs uppercase tracking-wider;
+
+    &:hover {
+        @apply bg-brand-secondary dark:bg-brand-secondary-dark;
+    }
+}
+
+.fi-topbar-before {
+    @apply bg-brand-primary text-content-primary px-6 py-2 lg:px-6 lg:py-4 lg:flex lg:justify-between;
+
+    .fi-icon-btn {
+        @apply text-white;
+    }
+}
+
+/* Sidebar */
+.fi-sidebar.fi-main-sidebar {
+    @apply bg-gray-50 dark:bg-black;
+
+    .fi-sidebar-group {
+        .fi-sidebar-item {
+            .fi-sidebar-item-label {
+
+                @apply font-light!;
+            }
+        }
+    }
+}
+
+/* Secondary sidebar */
+.fi-page-sub-navigation-sidebar-ctn {
+    .fi-sidebar-group-items {
+        @apply divide-gray-100 dark:divide-white/5 divide-y;
+
+        .fi-sidebar-item {
+            &.fi-active,
+            &:hover {
+                .fi-sidebar-item-btn {
+                    @apply bg-transparent;
+                }
+            }
+        }
+
+        .fi-sidebar-item-btn {
+            @apply rounded-none;
+
+            .fi-sidebar-item-label {
+                @apply font-light! text-sm;
+            }
+
+            .fi-icon {
+                @apply w-5!;
+            }
+        }
+    }
+}
+
+.fi-ta-record {
+    .fi-ta-record-title {
+        @apply text-lg mb-2;
+    }
+
+    .fi-ta-record-primary {
+        @apply mb-2;
+    }
+}
