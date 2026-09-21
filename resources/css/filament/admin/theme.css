@@ -2,29 +2,30 @@
 @import 'tailwindcss';
 @source '../../../../app/Filament/**/*';
 @source '../../../../resources/views/filament/**/*';
+@source '../../../../resources/views/pathfinder/**/*';
 @source '../../../../vendor/guava/calendar/resources/**/*';
-@import '../../../../vendor/awcodes/mason/resources/css/plugin.css';
+@import '../../../../vendor/guava/calendar/resources/css/theme.css';
 @source '../../../../vendor/awcodes/mason/resources/**/*.blade.php';
+@import '../../../../vendor/awcodes/mason/resources/css/plugin.css';
+@source '../../../../vendor/awcodes/palette/resources/**/*.blade.php';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --text-base: 16px;
+    --text-base: 18px;
     
-    --color-layout-primary: #f7f7f7;
-    --color-layout-secondary: #e9e9e9;
-    --color-layout-primary-dark: oklch(0, 0, 0); /* Black - #000 */
-    --color-layout-secondary-dark: oklch(0 0 0); /* Mid grey - #444 */
-
-    --color-brand-primary: #1985a1;
-    --color-brand-secondary: #4c5c88;
-    --color-brand-primary-dark: oklch(0 0 0); /* Black - #000 */
-    --color-brand-secondary-dark: oklch(0.1776 0 0); /* Black - #000 */
+    --color-layout-primary: #fff;
+    --color-layout-secondary: #f6f6f6;
+    --color-layout-primary-dark: #0f0f0f;
+    --color-layout-secondary-dark: #000;
 
     --color-content-primary: #333;
+    --color-content-primary-dark: #eee;
+    --color-contrast-primary: #eee;
+    --color-contrast-primary-dark: #333;
     
-    --color-keyline-primary: #ededed; /* Off-white - #f2f2f2 */
-    --color-keyline-secondary: oklch(0.3867 0 0); /* Mid grey - #444 */
+    --color-keyline-primary: #ededed;
+    --color-keyline-primary-dark: #202020;
 
     --spacing-content: 1600px;
 }
@@ -45,10 +46,10 @@
     }
 }
 
-/* Basic structure */
 .fi {
-    @apply bg-layout-primary text-content-primary dark:bg-black antialiased font-light;
+    @apply bg-layout-secondary dark:bg-layout-secondary-dark text-content-primary dark:text-content-primary-dark antialiased font-light!;
 
+    /* Basic utilities */
     > * {
         @apply text-inherit;
     }
@@ -57,25 +58,51 @@
         @apply bg-transparent;
     }
 
-    .fi-layout {
-        @apply w-full max-w-content mx-auto;
+    .fi-main {
+        @apply px-4 lg:px-8;
     }
 
-    /* Pre-header */
-    .fi-pre-header {
-        @apply py-1 lg:py-4 lg:flex lg:justify-between text-xs bg-brand-primary text-white border-b border-b-keyline-primary hidden!;
+    /* Pre Top Bar */
+    .fi-pre-topbar {
+        @apply py-1 lg:py-4 lg:flex lg:justify-between bg-(--tertiaryLight-500) dark:bg-(--tertiaryDark-500) text-contrast-primary dark:text-contrast-primary border-b border-b-keyline-primary dark:border-b-keyline-primary-dark;
 
         .fi-icon-btn {
             
         }
     }
 
-    /* Main header */
+    /* Top Bar */
     .fi-topbar-ctn {
-        @apply bg-transparent dark:bg-transparent shadow-none;
+        @apply bg-layout-primary dark:bg-layout-primary-dark shadow-none border-b border-b-keyline-primary dark:border-b-keyline-primary-dark;
 
         .fi-topbar {
-            @apply w-full max-w-content mx-auto bg-transparent shadow-none border-0 ring-0;
+            @apply w-full min-h-20 bg-transparent shadow-none border-0 ring-0 lg:mr-auto;
+
+            .fi-topbar-nav-groups {
+                @apply lg:ml-auto;
+
+                .fi-topbar-item {
+                    .fi-topbar-item-btn {
+                        @apply rounded-sm;
+
+                        .fi-topbar-item-label {
+                            @apply text-content-primary dark:text-content-primary-dark text-xs font-bold uppercase tracking-wider;
+                        }
+                    }
+
+                    &.fi-active {
+                        .fi-topbar-item-btn {
+                            .fi-topbar-item-label {
+                                @apply text-(--tertiaryLight-500) dark:text-(--tertiaryDark-500);
+                            }
+
+                            .fi-icon {
+                                @apply text-(--tertiaryLight-500) dark:text-(--tertiaryDark-500);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -102,7 +129,7 @@
 
             .fi-sidebar-item {
                 .fi-sidebar-item-btn {
-                    @apply rounded-3xl text-content-primary;
+                    @apply rounded-3xl text-content-primary dark:text-content-primary-dark;
 
                     .fi-sidebar-item-icon {
                         @apply rounded-full bg-layout-secondary p-1;
@@ -136,15 +163,33 @@
         }
     }
 
-    /* Main content */
-    .fi-main {
-        @apply px-4 lg:px-4
+    /* Main header */
+    .fi-page-header-main-ctn {
+        @apply pt-0;
+
+        .fi-header {
+            @apply bg-layout-primary dark:bg-layout-primary-dark -mx-4 lg:-mx-8 py-12 px-4 lg:px-8 border-b-8 border-b-keyline-primary dark:border-b-keyline-primary-dark;
+
+            /* Breadcrumbs */
+            .fi-breadcrumbs {
+                .fi-breadcrumbs-item {
+                    .fi-breadcrumbs-item-label {
+                        @apply text-(--tertiaryLight-500) dark:text-(--tertiaryDark-500) text-xs font-bold tracking-wide uppercase;
+                    }
+                }
+            }
+
+            /* Header */
+            .fi-header-heading {
+                @apply text-content-primary dark:text-content-primary-dark text-5xl font-bold;
+            }
+        }
     }
 
     /* Sections */
     .fi-sc {
         &.fi-sc-has-gap {
-            @apply gap-2 lg:gap-4;
+            @apply gap-4 lg:gap-8;
         }
 
         .fi-sc-custom {
@@ -152,7 +197,7 @@
 
             .fi-sc-section-label-ctn {
                 .fi-sc-section-label {
-                    @apply text-lg text-brand-primary mb-1;
+                    @apply text-lg mb-1;
                 }
             }
         }
@@ -164,21 +209,21 @@
     }
 
     .fi-btn {
-        @apply rounded-lg font-extralight tracking-wider uppercase text-xs py-2.5 px-5;
+        @apply rounded-sm bg-(--tertiaryLight-500) dark:bg-(--tertiaryDark-500) text-contrast-primary dark:text-contrast-primary font-bold tracking-wide uppercase text-sm py-3 px-6;
 
         &:not(.fi-color) {
-            @apply bg-brand-primary text-white border border-brand-primary;
+            @apply bg-(--quaternaryLight-500) text-white border border-(--quaternaryLight-500);
         }
 
         &:hover {
-            @apply bg-brand-secondary dark:bg-brand-secondary-dark text-white;
+            @apply text-white;
         }
 
         &.fi-btn-empty {
-            @apply bg-transparent text-brand-primary;
+            @apply bg-transparent text-(--quinaryLight-500);
 
             &:hover {
-                @apply bg-brand-primary text-white;
+                @apply text-white;
             }
         }
 
@@ -197,7 +242,7 @@
                 &.fi-color {
                     label& {
                         input:checked + & {
-                            @apply bg-brand-primary text-white;
+                            @apply text-white;
 
                             .fi-icon {
                                 @apply text-white;
@@ -212,7 +257,7 @@
             }
 
             .fi-icon {
-                @apply w-8 h-8 rounded-none bg-transparent text-brand-primary;
+                @apply w-8 h-8 rounded-none bg-transparent;
             }
         }
 
@@ -227,30 +272,7 @@
 
     /* Badge */
     .fi-badge {
-        @apply uppercase tracking-wider text-xs rounded-full;   
-    }
-
-    /* Breadcrumbs */
-    .fi-breadcrumbs {
-        .fi-breadcrumbs-item {
-            .fi-breadcrumbs-item-label {
-                
-            }
-        }
-    }
-
-    /* Pre-header */
-    .fi-pre-header {
-        @apply py-1 lg:py-4 lg:flex lg:justify-between text-xs bg-brand-primary text-white border-b border-b-keyline-primary hidden!;
-
-        .fi-icon-btn {
-            
-        }
-    }
-
-    /* Header */
-    .fi-header-heading {
-        @apply text-content-primary font-normal;
+        @apply uppercase tracking-wider text-xs rounded-xs;
     }
 
     /* Forms */
@@ -305,23 +327,18 @@
     /* Tables */
     .fi-ta {
         .fi-ta-ctn {
-            @apply shadow-none ring-0;
+            @apply rounded-none ring-0 border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
 
             .fi-ta-header {
-                @apply border-0 pb-0;
+                @apply border-0;
 
                 .fi-ta-header-heading {
-                    @apply font-semibold;
+                    @apply text-content-primary dark:text-content-primary-dark text-xl font-bold;
                 }
             }
 
             & .fi-ta-header-toolbar {
                 @apply border-b-0;
-            }
-
-            .fi-ta-content-ctn {
-                .fi-ta-content {
-                }
             }
 
             .fi-ta-table {
@@ -333,6 +350,14 @@
                     :where(& > :not(:last-child)), tr:not(:last-child) {
                         @apply border-0;
                     }
+                }
+            }
+
+            &:where(.dark, .dark *) {
+                @apply bg-layout-primary-dark;
+
+                .fi-ta-record {
+                    @apply bg-layout-primary-dark;
                 }
             }
         }
@@ -361,7 +386,7 @@
     /* Panels */
     .fi-panel-custom {
         .fi-panel-ctn {
-            @apply rounded-lg bg-white;
+            @apply rounded-none bg-white;
 
             .fi-panel-heading {
                 @apply px-6 pt-4 font-semibold;
@@ -375,7 +400,42 @@
 
     .fi-wi-widget {
         .fi-section {
-            
+            @apply rounded-none;
+        }
+    }
+
+    /* Individual block/component themes */
+    .theme-tertiary {
+        .theme-text {
+            @apply text-(--tertiaryLight-500);
+        }
+        .fi-ta-ctn {
+            @apply border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
+        }
+        .fi-btn {
+            &.fi-btn-empty {
+                @apply text-(--tertiaryLight-500) dark:text-(--tertiaryDark-500);
+            }
+            &:not(.fi-btn-empty) {
+                @apply bg-(--tertiaryLight-500) dark:bg-(--tertiaryDark-500);
+            }
+        }
+    }
+
+    .theme-quaternary {
+        .theme-text {
+            @apply text-(--quaternaryLight-500) dark:text-(--quaternaryDark-500);
+        }
+        .fi-ta-ctn {
+            @apply border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
+        }
+        .fi-btn {
+            &.fi-btn-empty {
+                @apply text-(--quaternaryLight-500) dark:text-(--quaternaryDark-500);
+            }
+            &:not(.fi-btn-empty) {
+                @apply bg-(--quaternaryLight-500) dark:bg-(--quaternaryDark-500);
+            }
         }
     }
 }

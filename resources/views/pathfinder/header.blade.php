@@ -15,7 +15,7 @@ new class extends Component
 
 <div>
     <div class="fi-header py-4 lg:flex bg-white dark:bg-brand-secondary-dark text-brand-secondary dark:text-white relative z-5">
-        <div class="w-full max-w-content mx-auto px-6 lg:px-8">
+        <div class="w-full max-w-content mx-auto px-6 lg:px-6">
             <div class="w-full mx-auto flex items-center flex-nowrap md:flex-wrap gap-6 md:gap-6 md:justify-between">
                 <nav class="flex gap-12 md:gap-12 flex-wrap md:flex-nowrap">
                     <img class="max-w-42 dark:hidden" src="{{ asset($logoLight) }}" />

@@ -60,6 +60,6 @@ class NextTerm extends TableWidget
                     //
                 ]),
             ])
-            ->extraAttributes(['class' => 'fi-ta-custom-table']);
+            ->extraAttributes(['class' => 'fi-ta-custom-table theme-quaternary']);
     }
 }

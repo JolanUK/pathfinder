@@ -6,25 +6,33 @@ use Spatie\LaravelSettings\Settings;
 
 class StyleSettings extends Settings
 {
-    public $logoLight;
+    public ?string $logoLight;
 
-    public $logoDark;
+    public ?string $logoDark;
 
-    public $primaryLight;
+    public ?string $primaryLight;
 
-    public $secondaryLight;
+    public ?string $secondaryLight;
 
-    public $tertiaryLight;
+    public ?string $tertiaryLight;
 
-    public $quaternaryLight;
+    public ?string $quaternaryLight;
 
-    public $primaryDark;
+    public ?string $quinaryLight;
 
-    public $secondaryDark;
+    public ?string $senaryLight;
 
-    public $tertiaryDark;
+    public ?string $primaryDark;
 
-    public $quaternaryDark;
+    public ?string $secondaryDark;
+
+    public ?string $tertiaryDark;
+
+    public ?string $quaternaryDark;
+
+    public ?string $quinaryDark;
+
+    public ?string $senaryDark;
 
     public static function group(): string
     {

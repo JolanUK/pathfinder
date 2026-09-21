@@ -5,7 +5,7 @@
     </head>
     <body class="min-h-screen bg-[url(/public/images/bg.png)] dark:bg-none dark:bg-brand-primary-dark text-base">
 
-        @include('pathfinder.pre-header')
+        @include('pathfinder.pre-topbar')
 
         @include('pathfinder.header')
 

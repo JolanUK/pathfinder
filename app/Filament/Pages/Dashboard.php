@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use App\Filament\Widgets\DashboardCalendar;
+use BackedEnum;
 use Filament\Pages\Dashboard as BaseDashboard;
 use Filament\Pages\Dashboard\Concerns\HasFiltersForm;
 use Filament\Schemas\Schema;
@@ -12,6 +13,8 @@ use Override;
 class Dashboard extends BaseDashboard
 {
     use CanRefreshCalendar, HasFiltersForm;
+
+    protected static string|BackedEnum|null $navigationIcon = '';
 
     #[Override]
     protected function getFooterWidgets(): array

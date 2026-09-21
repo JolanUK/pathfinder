@@ -12,9 +12,13 @@ return new class extends SettingsMigration
         $this->migrator->add('style.secondaryLight', '');
         $this->migrator->add('style.tertiaryLight', '');
         $this->migrator->add('style.quaternaryLight', '');
+        $this->migrator->add('style.quinaryLight', '');
+        $this->migrator->add('style.senaryLight', '');
         $this->migrator->add('style.primaryDark', '');
         $this->migrator->add('style.secondaryDark', '');
         $this->migrator->add('style.tertiaryDark', '');
         $this->migrator->add('style.quaternaryDark', '');
+        $this->migrator->add('style.quinaryDark', '');
+        $this->migrator->add('style.senaryDark', '');
     }
 };

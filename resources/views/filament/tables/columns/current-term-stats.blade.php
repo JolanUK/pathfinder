@@ -9,10 +9,10 @@
 
         {{-- Course Breakdown --}}
         <div class="flex py-2">
-            <div class="flex gap-2 items-start text-md">
+            <div class="flex gap-2 items-start text-lg">
                 {{ __("Courses") }} 
                 
-                <x-filament::badge color="info" size="sm">
+                <x-filament::badge color="info" size="sm" class="mt-1">
                     {{ $courses }}
                 </x-filament::badge>     
             </div>
@@ -20,10 +20,10 @@
 
         {{-- Enrolment Breakdown --}}
         <div class="flex py-2">
-            <div class="flex gap-2 items-start text-md">
+            <div class="flex gap-2 items-start text-lg">
                 {{ __("Enrolments") }} 
                 
-                <x-filament::badge color="info" size="sm">
+                <x-filament::badge color="info" size="sm" class="mt-1">
                     {{ $enrolments }}
                 </x-filament::badge>     
             </div>
@@ -31,10 +31,10 @@
 
         {{-- Enrolment Breakdown --}}
         <div class="flex py-2">
-            <div class="flex gap-2 items-start text-md">
+            <div class="flex gap-2 items-start text-lg">
                 {{ __("Participants") }} 
                 
-                <x-filament::badge color="info" size="sm">
+                <x-filament::badge color="info" size="sm" class="mt-1">
                     {{ $participants }}
                 </x-filament::badge>     
             </div>

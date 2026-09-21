@@ -85,6 +85,54 @@ class ManageStyleSettings extends SettingsPage
                                     })
                                     ->label('Secondary background (light)')
                                     ->live(debounce: 500),
+
+                                ColorPicker::make('tertiaryLight')
+                                    ->belowLabel(__('This is the main accent colour of the application.'))
+                                    ->columnSpanFull()
+                                    ->hex()
+                                    ->afterStateHydrated(function (ColorPicker $component, $state) {
+                                        if (blank($state)) {
+                                            $component->state('#DFDAF3');
+                                        }
+                                    })
+                                    ->label('Primary palette colour (light)')
+                                    ->live(debounce: 500),
+
+                                ColorPicker::make('quaternaryLight')
+                                    ->belowLabel(__('This is the secondary accent colour of the application.'))
+                                    ->columnSpanFull()
+                                    ->hex()
+                                    ->afterStateHydrated(function (ColorPicker $component, $state) {
+                                        if (blank($state)) {
+                                            $component->state('#EED2D3');
+                                        }
+                                    })
+                                    ->label('Secondary palette colour (light)')
+                                    ->live(debounce: 500),
+
+                                ColorPicker::make('quinaryLight')
+                                    ->belowLabel(__('This is the tertiary accent colour of the application.'))
+                                    ->columnSpanFull()
+                                    ->hex()
+                                    ->afterStateHydrated(function (ColorPicker $component, $state) {
+                                        if (blank($state)) {
+                                            $component->state('#85C3E1');
+                                        }
+                                    })
+                                    ->label('Tertiary palette colour (light)')
+                                    ->live(debounce: 500),
+
+                                ColorPicker::make('senaryLight')
+                                    ->belowLabel(__('This is the quaternary accent colour of the application.'))
+                                    ->columnSpanFull()
+                                    ->hex()
+                                    ->afterStateHydrated(function (ColorPicker $component, $state) {
+                                        if (blank($state)) {
+                                            $component->state('#ABDCD5');
+                                        }
+                                    })
+                                    ->label('Quaternary palette colour (light)')
+                                    ->live(debounce: 500),
                             ]),
                         Section::make()
                             ->contained(false)
@@ -110,7 +158,55 @@ class ManageStyleSettings extends SettingsPage
                                             $component->state('#111111');
                                         }
                                     })
-                                    ->label('Secondary background (light)')
+                                    ->label('Secondary background (dark)')
+                                    ->live(debounce: 500),
+
+                                ColorPicker::make('tertiaryDark')
+                                    ->belowLabel(__('This is the main accent colour of the application.'))
+                                    ->columnSpanFull()
+                                    ->hex()
+                                    ->afterStateHydrated(function (ColorPicker $component, $state) {
+                                        if (blank($state)) {
+                                            $component->state('#DFDAF3');
+                                        }
+                                    })
+                                    ->label('Primary palette colour (dark)')
+                                    ->live(debounce: 500),
+
+                                ColorPicker::make('quaternaryDark')
+                                    ->belowLabel(__('This is the secondary accent colour of the application.'))
+                                    ->columnSpanFull()
+                                    ->hex()
+                                    ->afterStateHydrated(function (ColorPicker $component, $state) {
+                                        if (blank($state)) {
+                                            $component->state('#EED2D3');
+                                        }
+                                    })
+                                    ->label('Secondary palette colour (dark)')
+                                    ->live(debounce: 500),
+
+                                ColorPicker::make('quinaryDark')
+                                    ->belowLabel(__('This is the tertiary accent colour of the application.'))
+                                    ->columnSpanFull()
+                                    ->hex()
+                                    ->afterStateHydrated(function (ColorPicker $component, $state) {
+                                        if (blank($state)) {
+                                            $component->state('#85C3E1');
+                                        }
+                                    })
+                                    ->label('Tertiary palette colour (dark)')
+                                    ->live(debounce: 500),
+
+                                ColorPicker::make('senaryDark')
+                                    ->belowLabel(__('This is the quaternary accent colour of the application.'))
+                                    ->columnSpanFull()
+                                    ->hex()
+                                    ->afterStateHydrated(function (ColorPicker $component, $state) {
+                                        if (blank($state)) {
+                                            $component->state('#ABDCD5');
+                                        }
+                                    })
+                                    ->label('Quaternary palette colour (dark)')
                                     ->live(debounce: 500),
                             ]),
                     ]),

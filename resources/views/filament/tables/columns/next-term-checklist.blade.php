@@ -2,15 +2,17 @@
     <div class="flex flex-col lg:flex-row divide lg:divide-none divide-y divide-gray-200 dark:divide-gray-800 lg:gap-6">
 
         <div class="flex flex-row py-2 gap-2">
-            <h3 class="text-md font-normal">{{ __('Courses') }}</h3>
+            <h3 class="text-lg font-normal">{{ __('Courses') }}</h3>
 
             @if($record->courses)
                 <x-filament::icon-button
+                    class="-mt-1"
                     color="success"
                     icon="heroicon-o-check"
                 />
             @else
                 <x-filament::icon-button
+                    class="-mt-1"
                     color="danger"
                     icon="heroicon-o-x-mark"
                 />
@@ -18,15 +20,17 @@
         </div>
 
         <div class="flex flex-row py-2 gap-2">
-            <h3 class="text-md font-normal">{{ __('Content') }}</h3>
+            <h3 class="text-lg font-normal">{{ __('Content') }}</h3>
 
             @if($record->content)
                 <x-filament::icon-button
+                    class="-mt-1"
                     color="success"
                     icon="heroicon-o-check"
                 />
             @else
                 <x-filament::icon-button
+                    class="-mt-1"
                     color="danger"
                     icon="heroicon-o-x-mark"
                 />
@@ -34,15 +38,17 @@
         </div>
 
         <div class="flex flex-row py-2 gap-2">
-            <h3 class="text-md font-normal">{{ __('Prospectus') }}</h3>
+            <h3 class="text-lg font-normal">{{ __('Prospectus') }}</h3>
 
             @if($record->prospectus)
                 <x-filament::icon-button
+                    class="-mt-1"
                     color="success"
                     icon="heroicon-o-check"
                 />
             @else
                 <x-filament::icon-button
+                    class="-mt-1"
                     color="danger"
                     icon="heroicon-o-x-mark"
                 />

@@ -58,6 +58,6 @@ class CurrentTerm extends TableWidget
                     //
                 ]),
             ])
-            ->extraAttributes(['class' => 'fi-ta-custom-table']);
+            ->extraAttributes(['class' => 'fi-ta-custom-table theme-tertiary']);
     }
 }
