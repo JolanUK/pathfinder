@@ -8,7 +8,7 @@
                 </div>
 
                 <div class="w-full mt-1">
-                    <span class="text-brand-secondary/50 dark:text-white text-xs mb-2">
+                    <span class="text-content-primary/5 dark:text-white text-xs mb-2">
                         {{ $this->record->dateRange }}
                     </span>
                 </div>

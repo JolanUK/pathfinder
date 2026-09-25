@@ -5,14 +5,14 @@
 <div class="w-full">
     <div class="flex flex-col gap-1">
         <div class="flex gap-4 items-start">
-            <span class="text-2xl font-normal theme-text">{{ $record->title }}</span>
+            <span class="text-xl font-normal theme-text">{{ $record->title }}</span>
     
             <x-filament::badge color="info" size="sm" class="mt-2">
                 {{ __('UPCOMING') }}
             </x-filament::badge>
         </div>
     
-        <span class="text-brand-secondary/50 dark:text-white text-sm mb-2">
+        <span class="text-content-primary/50 dark:text-white/50 text-sm mb-2">
             {{ $record->dateRange }}
 
             <span class="font-italic">({{ __('starting in') }} {{ $record->startingIn }})</span>

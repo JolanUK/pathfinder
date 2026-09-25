@@ -26,8 +26,6 @@
     
     --color-keyline-primary: #ededed;
     --color-keyline-primary-dark: #202020;
-
-    --spacing-content: 1600px;
 }
 
 @layer theme {
@@ -76,7 +74,11 @@
         @apply bg-layout-primary dark:bg-layout-primary-dark shadow-none border-b border-b-keyline-primary dark:border-b-keyline-primary-dark;
 
         .fi-topbar {
-            @apply w-full min-h-20 bg-transparent shadow-none border-0 ring-0 lg:mr-auto;
+            @apply w-full min-h-20 px-4 lg:px-6 bg-transparent shadow-none border-0 ring-0 lg:mr-auto;
+
+            .fi-logo {
+                @apply m-0;
+            }
 
             .fi-topbar-nav-groups {
                 @apply lg:ml-auto;
@@ -99,6 +101,18 @@
                             .fi-icon {
                                 @apply text-(--tertiaryLight-500) dark:text-(--tertiaryDark-500);
                             }
+                        }
+                    }
+                }
+
+                .fi-dropdown-panel {
+                    @apply rounded-none ring-0 border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
+
+                    .fi-dropdown-list {
+                        @apply p-2;
+
+                        .fi-dropdown-list-item-label {
+                            @apply text-content-primary dark:text-content-primary-dark text-xs font-bold uppercase tracking-wider;
                         }
                     }
                 }
@@ -186,6 +200,10 @@
         }
     }
 
+    .fi-footer {
+        @apply bg-layout-primary dark:bg-layout-primary-dark py-12 border-t border-t-keyline-primary dark:border-t-keyline-primary-dark;
+    }
+
     /* Sections */
     .fi-sc {
         &.fi-sc-has-gap {
@@ -236,7 +254,7 @@
         @apply shadow-none ring-0;
 
         .fi-btn {
-            @apply w-full py-3 px-3 rounded-lg flex flex-col normal-case tracking-normal text-sm;
+            @apply w-full bg-layout-secondary dark:bg-layout-secondary-dark py-3 px-3 rounded-lg flex flex-col normal-case tracking-normal text-sm;
 
             &:not(.fi-outlined) {
                 &.fi-color {
@@ -330,15 +348,23 @@
             @apply rounded-none ring-0 border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
 
             .fi-ta-header {
-                @apply border-0;
+                @apply border-b border-b-keyline-primary dark:border-b-keyline-primary-dark;
 
                 .fi-ta-header-heading {
-                    @apply text-content-primary dark:text-content-primary-dark text-xl font-bold;
+                    @apply text-content-primary dark:text-content-primary-dark text-xs uppercase font-bold tracking-wider;
                 }
             }
 
             & .fi-ta-header-toolbar {
                 @apply border-b-0;
+            }
+
+            .fi-ta-content-header {
+                @apply border-keyline-primary dark:border-keyline-primary-dark;
+            }
+
+            .fi-ta-record {
+                @apply bg-transparent border-keyline-primary dark:border-keyline-primary-dark;
             }
 
             .fi-ta-table {
@@ -363,12 +389,36 @@
         }
 
         .fi-ta-header-cell {
-            @apply text-xs uppercase tracking-wider;
+            @apply text-xs uppercase font-bold tracking-wider;
         }
 
         .fi-ta-empty-state {
             &:not(.fi-ta-ctn-with-content-layout .fi-ta-empty-state) {
                 @apply border-t-0;
+            }
+        }
+
+        .fi-ta-table-title {
+            @apply text-lg;
+        }
+
+        .fi-ta-table-subtitle {
+            @apply text-content-primary/50 dark:text-white/50 text-sm mt-1;
+        }
+
+        .fi-ta-actions {
+            @apply divide-x divide-keyline-primary dark:divide-keyline-primary-dark gap-0;
+
+            .fi-ac-link-action {
+                @apply rounded-none font-bold tracking-wide uppercase text-sm py-1.5 px-4;
+
+                .fi-icon {
+                    @apply w-6 h-6 lg:hidden;
+                }
+
+                .fi-link-label {
+                    @apply text-sm uppercase font-bold tracking-wider mt-0.5;
+                }
             }
         }
 
@@ -400,7 +450,35 @@
 
     .fi-wi-widget {
         .fi-section {
-            @apply rounded-none;
+            @apply rounded-none ring-0 border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
+        
+            .fi-section-header {
+                @apply border-keyline-primary dark:border-keyline-primary-dark;
+
+                .fi-section-header-heading {
+                    @apply text-xs font-bold tracking-wide uppercase;
+                }
+            }
+        }
+    }
+
+    /* Individual components - Guava Calendar */
+    .ec {
+        .ec-toolbar {
+            .ec-button-group {
+                @apply rounded-sm overflow-hidden gap-0;
+
+                .ec-button {
+                    @apply rounded-none bg-gray-50 dark:bg-(--tertiaryDark-500) text-content-primary dark:text-content-primary-dark font-bold tracking-wide uppercase text-xs py-3 px-6;
+                
+                    &.ec-active {
+                        @apply bg-(--tertiaryLight-500) text-contrast-primary;
+                    }
+                }
+            }
+        }
+        .ec-event {
+            @apply p-2 rounded-xs text-white;
         }
     }
 
@@ -409,9 +487,11 @@
         .theme-text {
             @apply text-(--tertiaryLight-500);
         }
+
         .fi-ta-ctn {
             @apply border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
         }
+
         .fi-btn {
             &.fi-btn-empty {
                 @apply text-(--tertiaryLight-500) dark:text-(--tertiaryDark-500);
@@ -420,19 +500,35 @@
                 @apply bg-(--tertiaryLight-500) dark:bg-(--tertiaryDark-500);
             }
         }
+
+        &.full {
+            @apply bg-(--tertiaryLight-500) text-white;
+
+            .fi-ta-header-heading,
+            .theme-text {
+                @apply text-white;
+            }
+            
+            .fi-ta-ctn {
+                @apply bg-transparent;
+            }
+        }
     }
 
     .theme-quaternary {
         .theme-text {
             @apply text-(--quaternaryLight-500) dark:text-(--quaternaryDark-500);
         }
+
         .fi-ta-ctn {
             @apply border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
         }
+
         .fi-btn {
             &.fi-btn-empty {
                 @apply text-(--quaternaryLight-500) dark:text-(--quaternaryDark-500);
             }
+
             &:not(.fi-btn-empty) {
                 @apply bg-(--quaternaryLight-500) dark:bg-(--quaternaryDark-500);
             }

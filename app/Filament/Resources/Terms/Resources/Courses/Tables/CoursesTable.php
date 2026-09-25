@@ -22,8 +22,8 @@ class CoursesTable
                 TextColumn::make('course_type')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'Workshop' => 'success',
-                        'DropIn' => 'info',
+                        'workshop' => 'success',
+                        'drop-in' => 'info',
                     }),
                 TextColumn::make('terms.title')
                     ->bulleted()

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html class="fi" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         @include('partials.head')
     </head>
-    <body class="min-h-screen bg-[url(/public/images/bg.png)] dark:bg-none dark:bg-brand-primary-dark text-base">
+    <body class="fi-body min-h-screen dark:bg-brand-primary-dark text-base">
 
         @include('pathfinder.pre-topbar')
-
+        
         @include('pathfinder.header')
 
         {{ $slot }}

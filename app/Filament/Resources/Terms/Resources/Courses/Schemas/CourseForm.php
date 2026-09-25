@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Terms\Resources\Courses\Schemas;
 
+use App\Settings\CourseSettings;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -12,7 +14,10 @@ class CourseForm
     {
         return $schema
             ->components([
-                TextInput::make('course_type')
+                Select::make('course_type')
+                    ->options(
+                        collect(app(CourseSettings::class)->courseTypes)->pluck('name')->toArray()
+                    )
                     ->required(),
                 TextInput::make('title')
                     ->required(),

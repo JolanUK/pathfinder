@@ -6,6 +6,8 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -15,14 +17,20 @@ class TermsTable
     {
         return $table
             ->columns([
-                TextColumn::make('title')
-                    ->searchable(),
-                TextColumn::make('status')
-                    ->badge(),
-                TextColumn::make('start_date')
-                    ->date(),
-                TextColumn::make('end_date')
-                    ->date(),
+                Split::make([
+                    Stack::make([
+                        TextColumn::make('title')
+                            ->extraAttributes(['class' => 'fi-ta-table-title'])
+                            ->searchable(),
+                        TextColumn::make('dateRange')
+                            ->extraAttributes(['class' => 'fi-ta-table-subtitle'])
+                            ->searchable(),
+                    ]),
+                    Stack::make([
+                        TextColumn::make('status')
+                            ->badge(),
+                    ])
+                ])
             ])
             ->defaultSort('start_date', direction: 'asc')
             ->filters([

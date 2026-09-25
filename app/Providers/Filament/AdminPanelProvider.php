@@ -25,11 +25,12 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Svg\Style;
 
 class AdminPanelProvider extends PanelProvider
 {
     public function boot()
-    {
+    {  
         FilamentColor::register(function () {
             return [
                 // Light mode
@@ -55,12 +56,16 @@ class AdminPanelProvider extends PanelProvider
             fn (): string => Blade::render('pathfinder.pre-topbar'),
         );
         FilamentView::registerRenderHook(
+            PanelsRenderHook::BODY_START,
+            fn (): string => Blade::render('@vite("resources/js/app.js")'),
+        );
+        FilamentView::registerRenderHook(
             PanelsRenderHook::USER_MENU_BEFORE,
             fn (): string => Blade::render('pathfinder.user-menu-before'),
         );
         FilamentView::registerRenderHook(
-            PanelsRenderHook::BODY_START,
-            fn (): string => Blade::render('@vite("resources/js/app.js")'),
+            PanelsRenderHook::BODY_END,
+            fn (): string => Blade::render('pathfinder.footer'),
         );
     }
 

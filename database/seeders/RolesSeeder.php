@@ -42,6 +42,10 @@ class RolesSeeder extends Seeder
         Permission::create(['name' => 'set attendances']);
         Permission::create(['name' => 'override attendances']);
 
+        // Staff Manager permissions
+        Permission::create(['name' => 'edit staff']);
+        Permission::create(['name' => 'create staff']);
+
         // Create roles and assign existing permissions
         $role_staff = Role::create(['name' => 'staff']);
         $role_staff->givePermissionTo('staff');
@@ -63,6 +67,10 @@ class RolesSeeder extends Seeder
         $role_attendances->givePermissionTo('edit attendances');
         $role_attendances->givePermissionTo('set attendances');
         $role_attendances->givePermissionTo('override attendances');
+
+        $role_terms = Role::create(['name' => 'staff_manager']);
+        $role_terms->givePermissionTo('edit staff');
+        $role_terms->givePermissionTo('create staff');
 
         $user = User::factory()->create([
             'name' => 'Example Technical Admin',
