@@ -24,12 +24,12 @@ class TermForm
                 TextInput::make('slug')
                     ->disabled()
                     ->hintIcon(Heroicon::QuestionMarkCircle, tooltip: __('This generates the URL to the front-facing page. Please be aware, when you change the Title it\'ll change this too.')),
-                DateTimePicker::make('start_date')
+                DateTimePicker::make('start')
                     ->displayFormat('d/m/Y')
                     ->native(false)
                     ->required()
                     ->seconds(false),
-                DateTimePicker::make('end_date')
+                DateTimePicker::make('end')
                     ->displayFormat('d/m/Y')
                     ->native(false)
                     ->required()

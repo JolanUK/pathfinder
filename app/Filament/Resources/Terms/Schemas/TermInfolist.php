@@ -11,9 +11,9 @@ class TermInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('start_date')
+                TextEntry::make('start')
                     ->date(),
-                TextEntry::make('end_date')
+                TextEntry::make('end')
                     ->date(),
                 TextEntry::make('excerpt')
                     ->columnSpanFull(),

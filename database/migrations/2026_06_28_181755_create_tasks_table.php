@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->longText('description');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->dateTime('start');
+            $table->dateTime('end');
             $table->json('creator');
             $table->json('resources');
+            $table->string('status');
             $table->timestamps();
         });
     }

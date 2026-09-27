@@ -12,9 +12,9 @@ class TaskInfolist
         return $schema
             ->components([
                 TextEntry::make('title'),
-                TextEntry::make('start_date')
+                TextEntry::make('start')
                     ->dateTime(),
-                TextEntry::make('end_date')
+                TextEntry::make('end')
                     ->dateTime(),
                 TextEntry::make('created_at')
                     ->dateTime()

@@ -33,6 +33,8 @@ class AdminPanelProvider extends PanelProvider
     {  
         FilamentColor::register(function () {
             return [
+                'primary' => Color::hex(app(StyleSettings::class)->tertiaryLight ?? '#DFDAF3'),
+
                 // Light mode
                 'primaryLight' => Color::hex(app(StyleSettings::class)->primaryLight ?? '#FFFFFF'),
                 'secondaryLight' => Color::hex(app(StyleSettings::class)->secondaryLight ?? '#F6F6F6'),

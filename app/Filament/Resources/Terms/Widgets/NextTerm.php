@@ -25,7 +25,7 @@ class NextTerm extends TableWidget
         return $table
             ->query(fn (): Builder => Term::query()
                 ->where('id', '!=', $term)
-                ->orderBy('start_date', 'asc')
+                ->orderBy('start', 'asc')
                 ->limit(1))
             ->columns([
                 Split::make([

@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Enums\TaskStatuses;
+use Carbon\Carbon;
 use Database\Factories\TaskFactory;
+use Filament\Support\Colors\Color;
+use Filament\Support\Facades\FilamentColor;
 use Guava\Calendar\Contracts\Eventable;
 use Guava\Calendar\ValueObjects\CalendarEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Task extends Model implements Eventable
 {
@@ -17,35 +21,47 @@ class Task extends Model implements Eventable
     protected $fillable = [
         'title',
         'description',
-        'start_date',
-        'end_date',
+        'start',
+        'end',
         'creator',
         'resources',
+        'status'
     ];
 
-    public function taskCreator(): HasMany
+    public function taskCreator(): BelongsTo
     {
-        return $this->hasMany(User::class, 'creator')
+        return $this->belongsTo(User::class, 'creator')
             ->role('staff');
     }
 
-    public function taskResources(): HasMany
+    public function taskResources(): BelongsTo
     {
-        return $this->hasMany(User::class, 'resources')
+        return $this->belongsTo(User::class, 'resources')
             ->role('staff');
+    }
+
+    public function getTaskColourAttribute()
+    {
+        return $this->status->getColor();
     }
 
     public function toCalendarEvent(): CalendarEvent
     {
         return CalendarEvent::make($this)
             ->title($this->title)
-            ->start($this->start_date)
-            ->end($this->end_date)
-            ->backgroundColor('green');
+            ->start($this->start)
+            ->end($this->end)
+            ->backgroundColor($this->task_colour)
+            ->extendedProps([
+                'course' => $this->title,
+                'start' => Carbon::parse($this->start)->format('g:ia'),
+                'end' => Carbon::parse($this->end)->format('g:ia'),
+            ]);
     }
 
     protected $casts = [
         'creator' => 'json',
         'resources' => 'json',
+        'status' => TaskStatuses::class,
     ];
 }

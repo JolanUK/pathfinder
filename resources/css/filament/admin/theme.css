@@ -464,21 +464,40 @@
 
     /* Individual components - Guava Calendar */
     .ec {
+        .ec-button {
+            @apply rounded-none bg-gray-50 dark:bg-(--tertiaryDark-500) text-content-primary dark:text-content-primary-dark font-bold tracking-wide uppercase text-xs py-3 px-6;
+        
+            &.ec-active {
+                @apply bg-(--tertiaryLight-500) text-contrast-primary;
+            }
+        }
+
         .ec-toolbar {
             .ec-button-group {
                 @apply rounded-sm overflow-hidden gap-0;
+            }
+        }
 
-                .ec-button {
-                    @apply rounded-none bg-gray-50 dark:bg-(--tertiaryDark-500) text-content-primary dark:text-content-primary-dark font-bold tracking-wide uppercase text-xs py-3 px-6;
-                
-                    &.ec-active {
-                        @apply bg-(--tertiaryLight-500) text-contrast-primary;
-                    }
+        .ec-day {
+            @apply text-content-primary;
+
+            .ec-day-head {
+                @apply rounded-none bg-gray-50 dark:bg-(--tertiaryDark-500) text-content-primary dark:text-content-primary-dark font-bold tracking-wide uppercase text-xs py-3 px-6;
+            }
+
+            .ec-event {
+                .ec-event-body {
+                    @apply text-content-primary;
                 }
             }
         }
+
         .ec-event {
-            @apply p-2 rounded-xs text-white;
+            @apply p-0;
+
+            .ec-event-body {
+                @apply p-2 rounded-xs text-white;
+            }
         }
     }
 

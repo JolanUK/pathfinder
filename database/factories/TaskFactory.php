@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\TaskStatuses;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -21,10 +22,11 @@ class TaskFactory extends Factory
         return [
             'title' => $this->faker->word(),
             'description' => $this->faker->sentence(),
-            'start_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'end_date' => $this->faker->dateTimeBetween('now', '+1 year'),
+            'start' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'end' => $this->faker->dateTimeBetween('now', '+1 year'),
             'creator' => User::all()->random()->id,
             'resources' => User::all()->random()->id,
+            'status' => $this->faker->randomElement(TaskStatuses::cases())->value,
             'created_at' => now(),
             'updated_at' => now(),
         ];

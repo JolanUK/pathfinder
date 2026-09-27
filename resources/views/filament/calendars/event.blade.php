@@ -5,5 +5,4 @@
         <span>-</span>
         <span x-text="event.extendedProps.end"></span>
     </span>
-    
 </div>

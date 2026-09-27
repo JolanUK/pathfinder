@@ -17,10 +17,10 @@ class TasksTable
             ->columns([
                 TextColumn::make('title')
                     ->searchable(),
-                TextColumn::make('start_date')
+                TextColumn::make('start')
                     ->dateTime()
                     ->sortable(),
-                TextColumn::make('end_date')
+                TextColumn::make('end')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('created_at')

@@ -21,8 +21,8 @@ class TermFactory extends Factory
         return [
             'title' => 'Example Term - '.$this->faker->unique()->word(),
             'slug' => fn (array $attributes) => Str::slug($attributes['title']),
-            'start_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'end_date' => $this->faker->dateTimeBetween('now', '+1 year'),
+            'start' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'end' => $this->faker->dateTimeBetween('now', '+1 year'),
             'excerpt' => $this->faker->sentence(),
             'content' => $this->faker->sentence(),
             'prospectus' => $this->faker->sentence(),

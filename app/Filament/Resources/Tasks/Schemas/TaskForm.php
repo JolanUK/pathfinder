@@ -8,6 +8,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class TaskForm
 {
@@ -21,13 +22,13 @@ class TaskForm
                 RichEditor::make('description')
                     ->columnSpan(2)
                     ->required(),
-                DateTimePicker::make('start_date')
+                DateTimePicker::make('start')
                     ->defaultFocusedDate(now())
                     ->native(false)
                     ->placeholder(now())
                     ->required()
                     ->seconds(false),
-                DateTimePicker::make('end_date')
+                DateTimePicker::make('end')
                     ->defaultFocusedDate(now())
                     ->minDate(now())
                     ->native(false)
@@ -35,7 +36,7 @@ class TaskForm
                     ->required()
                     ->seconds(false),
                 Select::make('creator')
-                    ->default(fn () => auth()->id())
+                    ->default(fn () => Auth::id())
                     ->native(false)
                     ->relationship(name: 'taskCreator', titleAttribute: 'name')
                     ->required(),

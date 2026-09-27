@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->string('slug')->unique();
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->string('start');
+            $table->string('end');
             $table->longText('excerpt');
             $table->longText('content');
             $table->longText('prospectus');

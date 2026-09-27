@@ -14,9 +14,9 @@ class ModuleForm
             ->components([
                 TextInput::make('title'),
                 TextInput::make('excerpt'),
-                DateTimePicker::make('start_date')
+                DateTimePicker::make('start')
                     ->required(),
-                DateTimePicker::make('end_date')
+                DateTimePicker::make('end')
                     ->required(),
             ]);
     }

@@ -19,8 +19,8 @@ class Term extends Model
     protected $fillable = [
         'title',
         'slug',
-        'start_date',
-        'end_date',
+        'start',
+        'end',
         'content',
         'prospectus',
         'excerpt',
@@ -62,9 +62,9 @@ class Term extends Model
     public function getDateRangeAttribute()
     {
         // Format: [start date] - [end date]
-        if (! empty($this->start_date) and ! empty($this->end_date)) {
-            $start = Carbon::parse($this->start_date);
-            $end = Carbon::parse($this->end_date);
+        if (! empty($this->start) and ! empty($this->end)) {
+            $start = Carbon::parse($this->start);
+            $end = Carbon::parse($this->end);
 
             return $start->format('d/m/Y').' - '.$end->format('d/m/Y') ?? '';
         }
@@ -72,8 +72,8 @@ class Term extends Model
 
     public function getStartingInAttribute()
     {
-        if (! empty($this->start_date)) {
-            $date = Carbon::parse($this->start_date);
+        if (! empty($this->start)) {
+            $date = Carbon::parse($this->start);
 
             return $date->since() ?? '';
         }
@@ -81,8 +81,8 @@ class Term extends Model
 
     public function getTimeLeftAttribute()
     {
-        if (! empty($this->end_date)) {
-            $date = Carbon::parse($this->end_date);
+        if (! empty($this->end)) {
+            $date = Carbon::parse($this->end);
 
             return $date->since() ?? '';
         }
@@ -95,7 +95,7 @@ class Term extends Model
         if ($this->id === $term) {
             return TermStatuses::Live;
         } else {
-            if (Carbon::parse($this->end_date)->isPast()) {
+            if (Carbon::parse($this->end)->isPast()) {
                 return TermStatuses::Passed;
             }
 

@@ -48,7 +48,7 @@ class DashboardCalendar extends CalendarWidget
         return [
             'headerToolbar' => [
                 'start' => 'title',
-                'center' => 'dayGridMonth,timeGridWeek,listWeek,listDay',
+                'center' => 'dayGridMonth,listWeek,listDay',
                 'end' => 'today prev,next',
             ],
             'hiddenDays' => [0, 6]
@@ -58,7 +58,7 @@ class DashboardCalendar extends CalendarWidget
     protected function getEvents(FetchInfo $info): Collection|array|Builder
     {
         return collect()
-            ->push(...Task::query()->where('start_date', '>=', $info->start)->where('start_date', '<=', $info->end)->get())
+            ->push(...Task::query()->where('start', '>=', $info->start)->where('start', '<=', $info->end)->get())
             ->push(...Module::query()->where('start', '>=', $info->start)->where('end', '<=', $info->end)->get());
     }
 }
