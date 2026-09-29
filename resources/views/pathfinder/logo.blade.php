@@ -6,8 +6,8 @@ use Livewire\Component;
 new class extends Component
 {
 
-};
+}
 ?>
 
-<img src="{{ asset(app(StyleSettings::class)->logoLight) }}" class="block dark:hidden"  />
-<img src="{{ asset(app(StyleSettings::class)->logoDark) }}" class="hidden dark:block"  />
+<img src="{{ !empty(app(StyleSettings::class)->logoLight) ? asset(app(StyleSettings::class)->logoLight) : asset('images/logo-light.png') }}" class="block dark:hidden"  />
+<img src="{{ !empty(app(StyleSettings::class)->logoDark) ? asset(app(StyleSettings::class)->logoDark) : asset('images/logo-dark.png') }}" class="hidden dark:block"  />

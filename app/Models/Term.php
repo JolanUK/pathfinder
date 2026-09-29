@@ -5,13 +5,17 @@ namespace App\Models;
 use App\Enums\TermStatuses;
 use Carbon\Carbon;
 use Database\Factories\TermFactory;
+use Guava\Calendar\Contracts\Eventable;
+use Guava\Calendar\Contracts\Resourceable;
+use Guava\Calendar\ValueObjects\CalendarEvent;
+use Guava\Calendar\ValueObjects\CalendarResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
-class Term extends Model
+class Term extends Model implements Eventable, Resourceable
 {
     /** @use HasFactory<TermFactory> */
     use HasFactory;
@@ -101,6 +105,27 @@ class Term extends Model
 
             return TermStatuses::Upcoming;
         }
+    }
+
+    public function toCalendarResource(): CalendarResource
+    {
+        return CalendarResource::make($this->getKey())
+            ->title($this->title);
+    }
+
+    public function toCalendarEvent(): CalendarEvent
+    {
+        return CalendarEvent::make($this)
+            ->title($this->title)
+            ->start($this->start)
+            ->end($this->end)
+            ->resourceId($this->id)
+            ->backgroundColor('green')
+            ->extendedProps([
+                'title' => $this->title,
+                'start' => Carbon::parse($this->start)->format('g:ia'),
+                'end' => Carbon::parse($this->end)->format('g:ia'),
+            ]);
     }
 
     protected $casts = [

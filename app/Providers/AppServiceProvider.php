@@ -10,6 +10,7 @@ use Faker\Factory;
 use Filament\Forms\Components\DateTimePicker;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 
@@ -43,6 +44,10 @@ class AppServiceProvider extends ServiceProvider
 
         DateTimePicker::configureUsing(function (DateTimePicker $picker): void {
             $picker->displayFormat('d/m/Y');
+        });
+
+        Gate::before(function ($user, $ability) {
+            return $user->hasRole('technical_admin') ? true : null;
         });
     }
 

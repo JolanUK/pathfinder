@@ -9,7 +9,7 @@ enum NavigationGroups: string implements HasLabel
 {
     case Content = 'content';
     case Courses = 'courses';
-    case Organisational = 'organisational';
+    case Team = 'team';
     case Participant = 'participant';
     case Participation = 'participation';
     case Settings = 'settings';
@@ -20,7 +20,7 @@ enum NavigationGroups: string implements HasLabel
         return match ($this) {
             self::Content => 'Content',
             self::Courses => 'Courses',
-            self::Organisational => 'Organisational',
+            self::Team => 'My Team',
             self::Participant => 'My Participant Profile',
             self::Participation => 'Participation',
             self::Settings => 'Settings',

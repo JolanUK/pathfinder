@@ -12,7 +12,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --text-base: 18px;
+    --text-base: 1rem;
     
     --color-layout-primary: #fff;
     --color-layout-secondary: #f6f6f6;
@@ -448,9 +448,10 @@
         }
     }
 
+    .fi-sc-component,
     .fi-wi-widget {
         .fi-section {
-            @apply rounded-none ring-0 border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
+            @apply flex flex-col rounded-none ring-0 border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
         
             .fi-section-header {
                 @apply border-keyline-primary dark:border-keyline-primary-dark;
@@ -458,6 +459,14 @@
                 .fi-section-header-heading {
                     @apply text-xs font-bold tracking-wide uppercase;
                 }
+            }
+
+            .fi-section-footer {
+                @apply mt-auto;
+            }
+
+            .fi-section-content-ctn {
+                @apply flex flex-1 flex-col;
             }
         }
     }
@@ -473,30 +482,39 @@
         }
 
         .ec-toolbar {
+            @apply pb-4;
+
             .ec-button-group {
                 @apply rounded-sm overflow-hidden gap-0;
             }
         }
 
-        .ec-day {
-            @apply text-content-primary;
+        .ec-event {
+            @apply rounded-none ring-0 p-3 border border-keyline-primary dark:border-keyline-primary-dark shadow-[8px_8px_0_0_var(--color-keyline-primary)] dark:shadow-[8px_8px_0_0_var(--color-keyline-primary-dark)];
 
-            .ec-day-head {
-                @apply rounded-none bg-gray-50 dark:bg-(--tertiaryDark-500) text-content-primary dark:text-content-primary-dark font-bold tracking-wide uppercase text-xs py-3 px-6;
-            }
-
-            .ec-event {
-                .ec-event-body {
-                    @apply text-content-primary;
-                }
+            .ec-event-body {
+                @apply text-white;
             }
         }
 
-        .ec-event {
-            @apply p-0;
+        &.ec-list {
+            &.ec-week-view,
+            &.ec-day-view {
+                .ec-day {
+                    @apply text-content-primary;
 
-            .ec-event-body {
-                @apply p-2 rounded-xs text-white;
+                    .ec-day-head {
+                        @apply rounded-none bg-gray-50 dark:bg-(--tertiaryDark-500) text-content-primary dark:text-content-primary-dark font-bold tracking-wide uppercase text-xs py-3 px-6;
+                    }
+
+                    .ec-event {
+                        @apply py-4 px-6 shadow-none border-0 border-b;
+
+                        .ec-event-body {
+                            @apply text-content-primary;
+                        }
+                    }
+                }
             }
         }
     }
@@ -515,6 +533,7 @@
             &.fi-btn-empty {
                 @apply text-(--tertiaryLight-500) dark:text-(--tertiaryDark-500);
             }
+            
             &:not(.fi-btn-empty) {
                 @apply bg-(--tertiaryLight-500) dark:bg-(--tertiaryDark-500);
             }
@@ -554,4 +573,3 @@
         }
     }
 }
-

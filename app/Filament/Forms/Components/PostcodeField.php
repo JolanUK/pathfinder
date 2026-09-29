@@ -94,7 +94,7 @@ class PostcodeField extends TextInput
     {
         parent::setUp();
 
-        $this->live()
+        $this->live(debounce: 500)
             ->minLength(6)
             ->maxLength(8)
             ->required()

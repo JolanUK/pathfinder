@@ -24,7 +24,7 @@ class UserResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
 
-    protected static string|UnitEnum|null $navigationGroup = NavigationGroups::Organisational;
+    protected static string|UnitEnum|null $navigationGroup = NavigationGroups::Team;
 
     protected static ?string $recordTitleAttribute = 'email';
 

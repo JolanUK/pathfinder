@@ -52,8 +52,13 @@ class Task extends Model implements Eventable
             ->start($this->start)
             ->end($this->end)
             ->backgroundColor($this->task_colour)
+            ->classNames([
+                'border-l-5', 'border-l-[var(--' . $this->task_colour . '-500)]'
+            ])
             ->extendedProps([
                 'course' => $this->title,
+                'colour' => $this->task_colour,
+                'status' => $this->status,
                 'start' => Carbon::parse($this->start)->format('g:ia'),
                 'end' => Carbon::parse($this->end)->format('g:ia'),
             ]);

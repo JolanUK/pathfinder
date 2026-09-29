@@ -3,18 +3,18 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Database\Factories\ParticipantFactory;
 use EduardoRibeiroDev\FilamentLeaflet\ValueObjects\Coordinate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Spatie\Activitylog\Models\Concerns\LogsActivity;
+use Spatie\Activitylog\Support\LogOptions;
 
 class Participant extends Model
 {
-    /** @use HasFactory<ParticipantFactory> */
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $appends = ['active_participant', 'surname_initial'];
 
@@ -170,6 +170,12 @@ class Participant extends Model
     public function scopeOrderBySurnameInitial($query, $direction = 'asc')
     {
         return $query->orderBy('surname', $direction);
+    }
+
+    // Activity logging
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logFillable();
     }
 
     protected $casts = [

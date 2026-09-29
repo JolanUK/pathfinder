@@ -13,11 +13,12 @@ new class extends Component
         <div class="w-full px-4 lg:px-6">
             <div class="w-full flex items-center flex-nowrap md:flex-wrap gap-6 md:gap-6 lg:justify-between">
                 <nav class="text-sm flex gap-12 md:gap-6 flex-wrap md:flex-nowrap">
-                    @foreach(filament()->getPanels() as $panel)
+                    Placeholder
+                    {{-- @foreach(filament()->getPanels() as $panel)
                         <a href="{{ $panel->getLoginUrl() }}" class="text-xs">
                             {{ $panel->getBrandName() }}
                         </a>
-                    @endforeach
+                    @endforeach --}}
                 </nav>
 
                 <nav class="gap-6 flex lg:justify-end lg:ml-auto">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Settings\StyleSettings;
 use Livewire\Component;
 
 new class extends Component
