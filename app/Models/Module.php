@@ -9,11 +9,13 @@ use Guava\Calendar\Contracts\Eventable;
 use Guava\Calendar\ValueObjects\CalendarEvent;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Models\Concerns\LogsActivity;
+use Spatie\Activitylog\Support\LogOptions;
 
 class Module extends Model implements Eventable
 {
     /** @use HasFactory<ModuleFactory> */
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $fillable = [
         'title',
@@ -54,5 +56,11 @@ class Module extends Model implements Eventable
                 'start' => Carbon::parse($this->start)->format('g:ia'),
                 'end' => Carbon::parse($this->end)->format('g:ia'),
             ]);
+    }
+
+    // Activity logging
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()->logFillable();
     }
 }

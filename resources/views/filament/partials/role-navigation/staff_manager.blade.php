@@ -7,18 +7,27 @@ use Spatie\Activitylog\Models\Activity;
 
 new class extends Component 
 {
-    public $activities = [];
-
-    public function mount() {
-        $this->activities = Activity::orderBy('created_at', 'DESC')->get();
-    }    
+   
 };
 ?>
 
 <div>
-    <div class="">
+    <div class="divide-y divide-keyline-primary dark:divide-keyline-primary-dark">
         <x-filament::link
-            class="w-full pb-3 items-start justify-between"
+            class="w-full py-3 first-of-type:pt-0 items-start justify-between"
+            icon="heroicon-m-chevron-right"
+            icon-position="after"
+        >
+            <span class="text-base text-content-primary dark:text-content-primary-dark">{{ __('Staff availability for today') }}</span>
+
+            <x-filament::badge color="info" class="ml-2">
+                4
+            </x-filament::badge>
+
+        </x-filament::link>
+
+        <x-filament::link
+            class="w-full py-3 first-of-type:pt-0 items-start justify-between"
             icon="heroicon-m-chevron-right"
             icon-position="after"
         >

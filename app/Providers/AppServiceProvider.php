@@ -12,7 +12,9 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
+use Spatie\Activitylog\Facades\Activity;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -47,7 +49,18 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::before(function ($user, $ability) {
-            return $user->hasRole('technical_admin') ? true : null;
+            return $user->hasRole('technical_manager') ? true : null;
+        });
+
+        // Activity logging
+        $batchUuid = (string) Str::uuid();
+
+        Activity::beforeLogging(function ($activity) use ($batchUuid) {
+            $activity->batch_uuid = $batchUuid;
+        });
+
+        Activity::beforeLogging(function (\Spatie\Activitylog\Contracts\Activity $activity) {
+            $activity->properties = $activity->properties->put('ip', request()->ip());
         });
     }
 

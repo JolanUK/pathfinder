@@ -26,7 +26,16 @@ new class extends Component implements HasActions, HasSchemas, HasTable
         return $table
             ->query(Enrolment::query()->where('term_id', '=', app(GlobalSettings::class)->currentTerm))
             ->columns([
-                TextColumn::make('user_id'),
+                TextColumn::make('enrolmentParticipant.full_name')
+                    ->label(__('Name')),
+                TextColumn::make('enrolmentCourse.title')
+                    ->label(__('Course')),
+                TextColumn::make('status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'active' => 'success',
+                        'drop-in' => 'info',
+                    }),
             ])
             ->filters([
                 // ...

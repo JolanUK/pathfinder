@@ -50,7 +50,7 @@ class RolesSeeder extends Seeder
         $role_staff = Role::create(['name' => 'staff']);
         $role_staff->givePermissionTo('staff');
 
-        $role_technical_admin = Role::create(['name' => 'technical_admin']);
+        $role_technical_manager = Role::create(['name' => 'technical_manager']);
 
         $role_terms = Role::create(['name' => 'terms_manager']);
         $role_terms->givePermissionTo('edit terms');
@@ -77,7 +77,7 @@ class RolesSeeder extends Seeder
             'email' => 'technicaladmin@example.com',
         ]);
         $user->assignRole($role_staff);
-        $user->assignRole($role_technical_admin);
+        $user->assignRole($role_technical_manager);
 
         $user = User::factory()->create([
             'name' => 'Example Admissions Manager',
