@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('course_type');
             $table->string('title');
+            $table->string('slug')->unique();
             $table->longText('excerpt');
             $table->integer('minimum_participants');
             $table->integer('maximum_participants');

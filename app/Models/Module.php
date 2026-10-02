@@ -19,12 +19,13 @@ class Module extends Model implements Eventable
 
     protected $fillable = [
         'title',
+        'slug',
         'excerpt',
         'start',
         'end',
     ];
 
-    public function course()
+    public function courses()
     {
         return $this->belongsToMany(Course::class, 'terms_modules', 'module_id');
     }

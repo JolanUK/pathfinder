@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
             ParticipantSeeder::class,
             EnrolmentSeeder::class,
             AttendanceSeeder::class,
-            EventSeeder::class,
             TaskSeeder::class,
             PageSeeder::class,
         ]);

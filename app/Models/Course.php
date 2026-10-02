@@ -19,6 +19,7 @@ class Course extends Model
     protected $fillable = [
         'course_type',
         'title',
+        'slug',
         'excerpt',
         'minimum_participants',
         'maximum_participants',

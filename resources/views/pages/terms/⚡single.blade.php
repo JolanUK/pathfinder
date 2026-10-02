@@ -6,15 +6,15 @@ use Livewire\Component;
 
 new class extends Component
 {
-    public $slug;
+    public $termSlug;
 
     protected Term $term;
 
     public $content;
 
-    public function mount($slug)
+    public function mount($termSlug)
     {
-        $this->term = Term::where('slug', $slug)->firstOrFail();
+        $this->term = Term::where('slug', $termSlug)->firstOrFail();
     }
 };
 ?>

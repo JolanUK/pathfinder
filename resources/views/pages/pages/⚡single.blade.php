@@ -6,15 +6,15 @@ use Livewire\Component;
 
 new class extends Component
 {
-    public $slug;
+    public $pageSlug;
 
     protected Page $page;
 
     public $content;
 
-    public function mount($slug)
+    public function mount($pageSlug)
     {
-        $this->page = Page::where('slug', $slug)->firstOrFail();
+        $this->page = Page::where('slug', $pageSlug)->firstOrFail();
     }
 };
 ?>
